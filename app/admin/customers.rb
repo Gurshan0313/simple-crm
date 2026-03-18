@@ -1,11 +1,13 @@
 ActiveAdmin.register Customer do
-  permit_params :full_name, :phone_number, :email, :notes, :image
+  permit_params :full_name, :phone_number, :email_address, :notes, :image
+
+  config.filters = false
 
   form do |f|
     f.inputs do
       f.input :full_name
       f.input :phone_number
-      f.input :email
+      f.input :email_address
       f.input :notes
       f.input :image, as: :file
     end
@@ -16,7 +18,7 @@ ActiveAdmin.register Customer do
     attributes_table do
       row :full_name
       row :phone_number
-      row :email
+      row :email_address
       row :notes
       row :image do |c|
         image_tag(c.image) if c.image.attached?
